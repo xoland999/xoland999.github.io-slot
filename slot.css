@@ -1,0 +1,173 @@
+@charset "UTF-8";
+#DemoSlotMachine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+#DemoSlotMachine .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#DemoSlotMachine .settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 5vh;
+}
+
+#DemoSlotMachine .settings .btn {
+  margin-right: 20px;
+  padding: 15px 30px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: #42b983;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#DemoSlotMachine .settings .btn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+#DemoSlotMachine .settings .displayType {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#DemoSlotMachine .settings .displayType::after {
+  position: absolute;
+  display: block;
+  left: 100%;
+  margin-left: 10px;
+  font-size: 16px;
+  content: '自動SPIN';
+  white-space: nowrap;
+}
+
+#DemoSlotMachine .settings .displayType:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+#DemoSlotMachine .resultHistory {
+  position: absolute;
+  -webkit-transform: translateZ(99999px);
+          transform: translateZ(99999px);
+  z-index: 999;
+  min-width: 300px;
+  height: 400px;
+  padding: 20px;
+  border: solid 5px #333;
+  border-radius: 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  overflow-y: auto;
+  visibility: hidden;
+}
+
+#DemoSlotMachine .resultHistory .result {
+  padding: 15px;
+  list-style: none;
+  font-size: 30px;
+}
+
+#DemoSlotMachine .resultHistory.openResultHistory {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gift-container {
+  /* 變數區 START */
+  /* 變數區 END*/
+  -webkit-perspective: 999999px;
+          perspective: 999999px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: var(--width);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.gift-container * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.gift-container .gift {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: var(--width);
+  height: var(--height);
+  border: 1px solid #333;
+  background-color: #fff;
+  font-size: var(--fontSize);
+}
+
+.gift-container .gift img {
+  padding: 1px;
+}
+
+.gift-container.flat {
+  -webkit-transform: rotateX(var(--currentDeg));
+          transform: rotateX(var(--currentDeg));
+}
+
+.gift-container.flat.autoTurn {
+  -webkit-transition: var(--duration) ease-in-out;
+  transition: var(--duration) ease-in-out;
+  -webkit-transform: rotateX(var(--targetDeg));
+          transform: rotateX(var(--targetDeg));
+}
+/*# sourceMappingURL=slot.css.map */

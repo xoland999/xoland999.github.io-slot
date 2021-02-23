@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slot game</title>
+
+    <link rel="stylesheet" type="text/css" href="slot.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="vueApp">
+        <div id="DemoSlotMachine" @click.self="openResultHistory = false">
+            <div :class="['resultHistory', {'openResultHistory' : openResultHistory }]">
+              <div class="result" v-for="(result, index) in resultHistory" :key="index">Round:{{index + 1}}: {{result}}</div>
+            </div>
+            <!--  -->
+            <div class="container">
+              <Gift
+                v-for="(config, index) in configs"
+                @finished="isFinished"
+                :auto-play="autoPlay"
+                :trigger="trigger"
+                :config="config"
+                :key="index">
+              </Gift>
+            </div>
+            <!--  -->
+            <div class="settings">
+              <button
+                class="btn"
+                @click="turn"
+                :disabled="disabled">
+                START
+              </button>
+              <button
+                class="btn"
+                @click="openResultHistory = true">
+                Result History
+              </button>
+              <input
+                type="checkbox"
+                class="displayType"
+                v-model= autoPlay>
+            </div>
+          </div>
+    </div>
+    
+    <script id="reelOutput" type="text/x-template">
+        <div :class="['gift-container', 'flat', { 'autoTurn': isRunning }]">
+            <div
+              :class="['gift', config.style]"
+              v-for="(gift, index) in config.img"
+              :key="index"
+              :style="'transform: rotateX(' + (rotate * index) + 'deg) translateZ(' + translateZ + 'px)'">
+              <template v-if="gift.type === 'text'">{{ gift.name }}</template>
+              <template v-if="gift.type === 'image'">
+                <img :src="'assets/'+gift.path" :height="config.height">
+              </template>
+            </div>
+          </div>
+    </script>
+    <script src="slot.js"></script>
+</body>
+</html>

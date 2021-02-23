@@ -1,0 +1,121 @@
+#DemoSlotMachine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    .container {
+        display: flex;
+    }
+    .settings {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 5vh;
+    .btn {
+        margin-right: 20px;
+        padding: 15px 30px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        background-color: #42b983;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.15s;
+        user-select: none;
+        &:disabled {
+          background-color: #ddd;
+          cursor: not-allowed;
+        }
+    }
+    .displayType {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::after {
+            position: absolute;
+            display: block;
+            left: 100%;
+            margin-left: 10px;
+            font-size: 16px;
+            content: '自動SPIN';
+            white-space: nowrap;
+        }
+        &:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+      }
+    }
+    .resultHistory {
+        position: absolute;
+        transform: translateZ(99999px);
+        z-index: 999;
+        min-width: 300px;
+        height: 400px;
+        padding: 20px;
+        border: solid 5px #333;
+        border-radius: 30px;
+        background-color: #fff;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+        opacity: 0;
+        transition: 0.5s;
+        overflow-y: auto;
+        visibility: hidden;
+        .result {
+            padding: 15px;
+            list-style: none;
+            font-size: 30px;
+        }
+        &.openResultHistory {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.gift-container {
+    /* 變數區 START */
+    $width: var(--width);
+    $height: var(--height);
+    $fontSize: var(--fontSize);
+    //
+    $duration: var(--duration);
+    $rotateY: var(--rotateY);
+    $targetDeg: var(--targetDeg);
+    $currentDeg: var(--currentDeg);
+    $rollBackDeg: var(--rollBackDeg);
+    /* 變數區 END*/
+    * {
+      box-sizing: border-box;
+    }
+    perspective: 999999px;
+    user-select: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: $width;
+    transform-style: preserve-3d;
+    .gift {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $width;
+        height: $height;
+        border: 1px solid #333;
+        background-color: #fff;
+        font-size: $fontSize;
+        img {
+            padding: 1px;
+        }
+    }
+    &.flat {
+        transform: rotateX($currentDeg);
+        &.autoTurn {
+            transition: $duration ease-in-out;
+            transform: rotateX($targetDeg);
+        }
+    }
+}
